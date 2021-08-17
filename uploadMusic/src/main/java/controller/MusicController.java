@@ -43,5 +43,9 @@ public class MusicController {
 
         return modelAndView;
     }
-
+   @GetMapping("/delete")
+    public String delete(@RequestParam int index){
+        musicService.remove(index);
+        return "redirect:/home";
+   }
 }

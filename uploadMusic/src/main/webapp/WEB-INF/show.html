@@ -15,6 +15,8 @@
       <th>Ten nghe sy</th>
       <th>the loai</th>
       <th>MusicFile</th>
+      <th>Delete</th>
+
     </tr>
     </thead>
     <tbody>
@@ -23,7 +25,7 @@
       <td th:text="${music.singername}"></td>
       <td th:text="${music.typemusic}"></td>
       <td th:text="${music.musicfile}"></td>
-
+      <td><a th:href="@{/delete(index=${loop.index})}" class="btn btn-danger">Delete</a></td>
     </tr>
     </tbody>
   </table>
