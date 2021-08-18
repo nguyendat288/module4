@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>Danh sách khách hàng</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+
+    <h2>Show Student</h2>
+    <a href="/create" class="btn btn-success">Create</a>
+    <br>
+    <form action="/product" method="get">
+        <input type="text" placeholder="Enter the id you want to find" name ="findName">
+        <input type="text" hidden name="action" value="findName">
+        <button type="submit" class="btn btn-info">Find by name</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <table class="table" border="2px">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="customer,loop:${list}">
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.name}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.address}"></td>
+                <td><a th:href="@{/edit/{index}(index=${loop.index})}" class="btn btn-warning">Edit</a></td>
+                <td><a th:href="@{/delete/{index}(index=${loop.index})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn không ?')">Delete</a></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <a href="/product" type="submit" class="btn btn-success">Home</a>
+</div>
+</body>
+</html>
