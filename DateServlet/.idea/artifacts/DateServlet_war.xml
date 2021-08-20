@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="DateServlet:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>DateServlet</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="DateServlet-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="DateServlet:war exploded" />
+    </root>
+  </artifact>
+</component>
