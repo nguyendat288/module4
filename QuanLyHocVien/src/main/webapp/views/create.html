@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head>
+        <title>Create Student</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+<body>
+<div class="container">
+    <h2>Create Student</h2>
+    <form action="/create" method="post" th:object="${student}">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>phone</th>
+                <th>email</th>
+                <th>classroom</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input placeholder="Enter the name" th:field="*{name}"></td>
+                <td><input placeholder="Enter the phone" th:field="*{phone}"></td>
+                <td><input placeholder="Enter the email" th:field="*{email}"></td>
+                <td>
+                    <select th:field="*{classroom}">
+                        <option th:each="classroom:${ListClass}" th:value="${classroom.id}"
+                                th:text="${classroom.name}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+                <td style="color: red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></td>
+                <td style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-success">Create</button>
+    </form>
+    <a href="/home" type="submit" class="btn btn-success">Home</a>
+
+</div>
+</body>
+</html>

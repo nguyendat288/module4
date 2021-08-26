@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>List Student</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+
+    <h2>Show Student</h2>
+    <a href="/create" class="btn btn-success">Create</a>
+    <br>
+    <form action="/findByName" method="get">
+        <input type="text" placeholder="Enter the id you want to find" name ="findName">
+        <input type="text" hidden name="action" value="findName">
+        <button type="submit" class="btn btn-info">Find by name</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <table class="table" border="2px">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>phone</th>
+            <th>email</th>
+            <th>classroom</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student:${ListStudent}">
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.phone}"></td>
+            <td th:text="${student.email}"></td>
+            <td th:text="${student.classroom.name}"></td>
+            <td><a th:href="@{/edit/{id}(id=${student.id})}" class="btn btn-warning">Edit</a></td>
+            <td><a th:href="@{/delete/{id}(id=${student.id})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn không ?')">Delete</a></td>
+        </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+        <a href="/home?pageNumber=1" type="submit" class="btn btn-success">next</a>
+    <a href="/home" type="submit" class="btn btn-success">home</a>
+</div>
+</body>
+</html>
